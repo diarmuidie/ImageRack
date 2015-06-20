@@ -10,7 +10,8 @@ $container = require_once __DIR__.'/../bootstrap/dependencies.php';
 // Run the imageRack server
 $server = new Diarmuidie\ImageRack\Server($container);
 
-// Array of templates
+// Array of available templates with claaback to return a processor
+// that implements Diarmuidie\ImageRack\Image\TemplateInterface
 $templates = array(
     'small' => function () {
         return new Templates\Small();
