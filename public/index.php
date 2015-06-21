@@ -21,4 +21,9 @@ $templates = array(
 // Set the valid templates
 $server->setTemplates($templates);
 
+// Optionally set the not found response content
+$server->notFound(function ($response) {
+    $response->setBody('Image not found.');
+});
+
 $server->run();
