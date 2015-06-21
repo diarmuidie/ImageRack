@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL | E_STRICT);
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 // Load our dependencies
 $container = require_once __DIR__.'/../bootstrap/dependencies.php';
