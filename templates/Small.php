@@ -2,7 +2,7 @@
 
 namespace Templates;
 
-use Diarmuidie\ImageRack\Image\TemplateInterface;
+use \Diarmuidie\ImageRack\Image\TemplateInterface;
 
 /**
  * Sample template to fit and image to 300px x 240px
