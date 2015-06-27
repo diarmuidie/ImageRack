@@ -15,6 +15,7 @@ class Small implements TemplateInterface
     public function process(\Intervention\Image\Image $image)
     {
         $image->fit(320, 240);
+        $image->encode();
         return $image;
     }
 }
