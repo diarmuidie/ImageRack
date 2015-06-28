@@ -36,3 +36,4 @@ $server->setNotFound(function ($response) {
 });
 
 $server->run();
+$server->send();
