@@ -1,4 +1,4 @@
-Image Rack
+ImageRack
 =============
 
 > Simple PHP image processor and server. Work in Progress.

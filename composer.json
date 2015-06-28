@@ -1,5 +1,5 @@
 {
-    "name": "diarmuidie/image-rack",
+    "name": "diarmuidie/imagerack",
     "description": "Simple PHP image processor and server.",
     "keywords": ["image", "server", "resize"],
     "license": "MIT",
@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "diarmuidie/image-rack-kernal": "^1.0"
+        "diarmuidie/imagerack-kernal": "dev-master",
     },
     "autoload": {
         "psr-4": {
