@@ -31,8 +31,8 @@ $server->setTemplate(
 );
 
 // Optionally set the not found response content
-$server->notFound(function ($response) {
-    $response->setBody('Image not found.');
+$server->setNotFound(function ($response) {
+    return $response->setContent('Image not found.');
 });
 
 $server->run();
