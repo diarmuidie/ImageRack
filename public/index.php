@@ -8,7 +8,11 @@ require '../vendor/autoload.php';
 $container = require_once __DIR__.'/../bootstrap/dependencies.php';
 
 // Run the imageRack server
-$server = new Diarmuidie\ImageRack\Server($container);
+$server = new Diarmuidie\ImageRack\Server(
+    $container['source'],
+    $container['cache'],
+    $container['imageManager']
+);
 
 // Array of available templates with claaback to return a processor
 // that implements Diarmuidie\ImageRack\Image\TemplateInterface
