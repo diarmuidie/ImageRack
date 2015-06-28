@@ -16,14 +16,19 @@ $server = new Diarmuidie\ImageRack\Server(
 
 // Array of available templates with claaback to return a processor
 // that implements Diarmuidie\ImageRack\Image\TemplateInterface
-$templates = array(
-    'small' => function () {
+$server->setTemplate(
+    'small',
+    function () {
         return new Templates\Small();
     }
 );
 
-// Set the valid templates
-$server->setTemplates($templates);
+$server->setTemplate(
+    'large',
+    function () {
+        return new Templates\Large();
+    }
+);
 
 // Optionally set the not found response content
 $server->notFound(function ($response) {
