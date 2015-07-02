@@ -3,14 +3,8 @@
     "description": "Simple PHP image processor and server.",
     "keywords": ["image", "server", "resize"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "diarmuid",
-            "email": "contact@diarmuid.ie"
-        }
-    ],
     "require": {
-        "diarmuidie/imagerack-kernal": "dev-master",
+        "diarmuidie/imagerack-kernel": "dev-master",
     },
     "autoload": {
         "psr-4": {
