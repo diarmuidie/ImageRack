@@ -2,8 +2,8 @@
 
 require '../vendor/autoload.php';
 
-// Load our dependency container
-$dependencies = require_once __DIR__.'/../bootstrap/dependencies.php';
+// Load our dependencies
+$dependencies = require_once __DIR__.'/../bootstrap/dependencies.local.sample.php';
 
 // Run the imageRack server
 $server = new Diarmuidie\ImageRack\Server(
