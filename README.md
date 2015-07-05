@@ -75,7 +75,13 @@ A single server deploy is the most straight forward configuration. Source images
 ### Multi-Server Setup
 To use the ImageRack server in a multi-server environment (i.e. more than one web servers sitting behind a load ballancer) you must store the source and cache images in a distributed filesystem.
 
-ImageRack comes with a sample configuration for using AWS S3 for this. To use this configuration edit `public/index.php` to load the sample S3 dependencies:
+ImageRack comes with a sample configuration for using AWS S3 for this. To use this configuration you must make sure the Flysystem S3 adapter is installed:
+
+```
+composer require league/flysystem-aws-s3-v3
+```
+
+Then you can edit `public/index.php` to load the sample S3 dependencies:
 
 ```php
 $dependencies = require_once __DIR__.'/../bootstrap/dependencies.s3.sample.php';
