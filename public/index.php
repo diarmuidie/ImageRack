@@ -14,12 +14,9 @@ $server = new Diarmuidie\ImageRack\Server(
 
 // Set each available template with a callback to return a processor
 // that implements Diarmuidie\ImageRack\Image\TemplateInterface
-$server->setTemplate(
-    'small',
-    function () {
-        return new Templates\Small();
-    }
-);
+$server->setTemplate('small', function () {
+    return new Templates\Small();
+});
 
 // Uncomment to set the set the not found response
 // $server->setNotFound(function ($response) {
