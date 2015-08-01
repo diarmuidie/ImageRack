@@ -68,6 +68,24 @@ $server->setNotFound(function ($response) {
 $response is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
 
 
+#### Error Response
+You can set an optional "error" response. By default a 500 header will be sent with the body "There has been a problem serving this request". However this can be changed using the `setError()` method:
+
+```php
+$server->setNotFound(function ($response, $exception) {
+
+    // Edit the response as required
+    $response->setContent('An internal error occured. ' . $exception->getMessage());
+
+    // Return the new response
+    return $response;
+
+});
+```
+
+$response is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
+
+
 ### Single Server Setup
 A single server deploy is the most straight forward configuration. Source images must be stored in the `storage/source` folder. Resized images will be cached in `storage/cache`.
 
