@@ -65,7 +65,7 @@ $server->setNotFound(function ($response) {
 });
 ```
 
-$response is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
+`$response` is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
 
 
 #### Error Response
@@ -83,7 +83,7 @@ $server->setNotFound(function ($response, $exception) {
 });
 ```
 
-$response is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
+`$response` is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
 
 
 ### Single Server Setup
