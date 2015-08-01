@@ -28,68 +28,30 @@ To start a new project use the composer `create-project` command to install the 
 composer create-project diarmuidie/imagerack <folder-name>
 ```
 
-Setup your browser to send all requests to `public/index.php`. 
-
 Once the package is installed you can edit the contents of:
 
 - `public/index.php` The main file that all requests are handled by.
 - `bootstrap/dependencies.local.sample.php` Where the Flysystem and Intervention Image dependencies are configured.
 - `templates/` Where your templates for resizing media will be stored.
 
-### Configuration
-ImageRack allows you to configure the server in a number of ways:
+### Server Configuration
 
-#### Templates
-Templates are objects that define how an image should be manipulated. You can create as many of your own templates. Tmeplates must implement the [Diarmuidie\ImageRack\Image\TemplateInterface](https://github.com/diarmuidie/ImageRack-Kernel/blob/master/src/Image/TemplateInterface.php) interface. There is a [sample template](https://github.com/diarmuidie/ImageRack/blob/master/templates/Small.php) provided with ImageRack for resizing images to 320×240px.
+#### Apache
+Ensure the `public/` directory is setup as your public-accessible DocumentRoot. The provided `.htaccess` file will redirect all requests to the ImageRack server.
 
-After you create a new template it must be registered in the server:
-
-```php
-$server->setTemplate(
-    'large',
-    function () {
-        return new Templates\Large();
-    }
-);
+#### Nginx
+The Nginx configuration file should include the following information (in addition to any other settings you require):
 ```
+root /some/folder/public;
+index  index.php;
 
-#### Not Found Response
-You can set an optional "not found" response. By default a 404 header will be sent with the body "File not found". However this can be changed using the `setNotFound()` method:
+location ~ \.php$ {
+    ...
+    try_files $uri $uri/ /index.php?$args;
+    ...
+}
 
-```php
-$server->setNotFound(function ($response) {
-
-    // Edit the response as required
-    $response->setContent('Image not found.');
-
-    // Return the new response
-    return $response;
-
-});
 ```
-
-`$response` is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
-
-
-#### Error Response
-You can set an optional "error" response. By default a 500 header will be sent with the body "There has been a problem serving this request". However this can be changed using the `setError()` method:
-
-```php
-$server->setNotFound(function ($response, $exception) {
-
-    // Edit the response as required
-    $response->setContent('An internal error occured. ' . $exception->getMessage());
-
-    // Return the new response
-    return $response;
-
-});
-```
-
-`$exception` is an instance of the caught exception.
-
-`$response` is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
-
 
 ### Single Server Setup
 A single server deploy is the most straight forward configuration. Source images must be stored in the `storage/source` folder. Resized images will be cached in `storage/cache`.
@@ -111,6 +73,62 @@ $dependencies = require_once __DIR__.'/../bootstrap/dependencies.s3.sample.php';
 ```
 
 You will also have to change the `bootstrap/dependencies.s3.sample.php` file to use your S3 Secret and Key and change the bucket names.
+
+Configuration
+-------------
+
+ImageRack allows you to configure the server in a number of ways:
+
+### Templates
+Templates are objects that define how an image should be manipulated. You can create as many of your own templates. Tmeplates must implement the [Diarmuidie\ImageRack\Image\TemplateInterface](https://github.com/diarmuidie/ImageRack-Kernel/blob/master/src/Image/TemplateInterface.php) interface. There is a [sample template](https://github.com/diarmuidie/ImageRack/blob/master/templates/Small.php) provided with ImageRack for resizing images to 320×240px.
+
+After you create a new template it must be registered in the server:
+
+```php
+$server->setTemplate(
+    'large',
+    function () {
+        return new Templates\Large();
+    }
+);
+```
+
+### Not Found Response
+You can set an optional "not found" response. By default a 404 header will be sent with the body "File not found". However this can be changed using the `setNotFound()` method:
+
+```php
+$server->setNotFound(function ($response) {
+
+    // Edit the response as required
+    $response->setContent('Image not found.');
+
+    // Return the new response
+    return $response;
+
+});
+```
+
+`$response` is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
+
+
+### Error Response
+You can set an optional "error" response. By default a 500 header will be sent with the body "There has been a problem serving this request". However this can be changed using the `setError()` method:
+
+```php
+$server->setNotFound(function ($response, $exception) {
+
+    // Edit the response as required
+    $response->setContent('An internal error occured. ' . $exception->getMessage());
+
+    // Return the new response
+    return $response;
+
+});
+```
+
+`$exception` is an instance of the caught exception.
+
+`$response` is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
 
 Changelog
 ---------
