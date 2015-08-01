@@ -17,7 +17,7 @@ Features
 - Integrates with Local or remote image stores using the [PHP League Flysystem](http://flysystem.thephpleague.com/) filesystem extraction library.
 - Ability to cache processed images so that subsequent requests are served quickly.
 - SEO friendly and easy to use URLs i.e. `example.com/<template>/path/to/source/image.png`.
-- Supports PNG/JPEG images.
+- Supports PNG/JPEG/GIF images.
 
 Usage
 -----
@@ -27,11 +27,14 @@ To start a new project use the composer `create-project` command to install the 
 ```
 composer create-project diarmuidie/imagerack <folder-name>
 ```
+
+Setup your browser to send all requests to `public/index.php`. 
+
 Once the package is installed you can edit the contents of:
 
 - `public/index.php` The main file that all requests are handled by.
 - `bootstrap/dependencies.local.sample.php` Where the Flysystem and Intervention Image dependencies are configured.
-- `templates` Where your templates for resizing media will be stored.
+- `templates/` Where your templates for resizing media will be stored.
 
 ### Configuration
 ImageRack allows you to configure the server in a number of ways:
@@ -82,6 +85,8 @@ $server->setNotFound(function ($response, $exception) {
 
 });
 ```
+
+`$exception` is an instance of the caught exception.
 
 `$response` is an instance of `Symfony\Component\HttpFoundation\Response`. See the [Symfony HTTP-Foundation docs](http://symfony.com/doc/current/components/http_foundation/introduction.html#response) for more info on what you can do with the response.
 
