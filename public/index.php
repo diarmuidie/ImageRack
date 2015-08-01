@@ -26,6 +26,11 @@ $server->setTemplate(
 //     return $response->setContent('Image not found.');
 // });
 
+// Uncomment to set the set the error response
+// $server->setError(function ($response, $exception) {
+//     return $response->setContent('An internal error occured. ' . $exception->getMessage());
+// });
+
 // Run the server for this request
 $server->run();
 
