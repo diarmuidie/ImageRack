@@ -18,12 +18,12 @@ $server->setTemplate('small', function () {
     return new Templates\Small();
 });
 
-// Uncomment to set the set the not found response
+// Uncomment to edit the default not found response
 // $server->setNotFound(function ($response) {
 //     return $response->setContent('Image not found.');
 // });
 
-// Uncomment to set the set the error response
+// Uncomment to edit the default error response
 // $server->setError(function ($response, $exception) {
 //     return $response->setContent('An internal error occured. ' . $exception->getMessage());
 // });
