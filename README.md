@@ -18,6 +18,7 @@ Features
 - Ability to cache processed images so that subsequent requests are served quickly.
 - SEO friendly and easy to use URLs i.e. `example.com/<template>/path/to/source/image.png`.
 - Supports PNG/JPEG/GIF images.
+- Adds cache-control, eTag and Last_Modified headers to response for better browser and CDN caching.
 
 Usage
 -----
