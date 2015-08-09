@@ -4,8 +4,8 @@
     "keywords": ["image", "server", "resize"],
     "license": "MIT",
     "require": {
-        "diarmuidie/imagerack-kernel": "^0.1"
         "php": ">=5.4",
+        "diarmuidie/imagerack-kernel": "^0.2"
     },
     "suggest": {
         "league/flysystem-aws-s3-v3": "Allows using S3 as the source and cache locations"
