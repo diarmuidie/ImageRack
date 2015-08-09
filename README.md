@@ -80,6 +80,15 @@ Configuration
 
 ImageRack allows you to configure the server in a number of ways:
 
+### HTTP Cache Max Age
+You can overwrite the default cache max age value (30 days):
+
+```php
+$server->setHttpCacheMaxAge(86000);
+```
+
+Setting the cache duration to zero days will disable the cache by setting a `Cache-Control:no-cache` header.
+
 ### Templates
 Templates are objects that define how an image should be manipulated. You can create as many of your own templates. Tmeplates must implement the [Diarmuidie\ImageRack\Image\TemplateInterface](https://github.com/diarmuidie/ImageRack-Kernel/blob/master/src/Image/TemplateInterface.php) interface. There is a [sample template](https://github.com/diarmuidie/ImageRack/blob/master/templates/Small.php) provided with ImageRack for resizing images to 320×240px.
 

@@ -18,6 +18,10 @@ $server->setTemplate('small', function () {
     return new Templates\Small();
 });
 
+// Uncomment to edit the default cache http header max age (in seconds).
+// Set to zero to disable browser caching
+// $server->setHttpCacheMaxAge(86400);
+
 // Uncomment to edit the default not found response
 // $server->setNotFound(function ($response) {
 //     return $response->setContent('Image not found.');
