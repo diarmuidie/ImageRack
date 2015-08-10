@@ -14,7 +14,7 @@ Features
 
 - Resizes images on the fly based on predefined user templates.
 - Uses the [Intervention image manipulation library](https://github.com/Intervention/image).
-- Integrates with Local or remote image stores using the [PHP League Flysystem](http://flysystem.thephpleague.com/) filesystem extraction library.
+- Integrates with local or remote (Amazon S3, SFTP, Azure etc.) image stores using the [PHP League Flysystem](http://flysystem.thephpleague.com/) filesystem abstraction library.
 - Ability to cache processed images so that subsequent requests are served quickly.
 - SEO friendly and easy to use URLs i.e. `example.com/<template>/path/to/source/image.png`.
 - Supports PNG/JPEG/GIF images.
