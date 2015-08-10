@@ -24,6 +24,6 @@ $dependencies['source'] = new Filesystem(new AwsS3Adapter($s3Client, 'image-rack
 $dependencies['cache'] = new Filesystem(new AwsS3Adapter($s3Client, 'image-rack-cache-bucket'));
 
 // The Intervention image manager instance
-$dependencies['imageManager'] = new ImageManager(array('driver' => 'imagick'));
+$dependencies['imageManager'] = new ImageManager(array('driver' => 'gd'));
 
 return $dependencies;
