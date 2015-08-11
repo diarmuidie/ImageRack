@@ -29,7 +29,7 @@ $server->setTemplate('small', function () {
 
 // Uncomment to edit the default error response
 // $server->setError(function ($response, $exception) {
-//     return $response->setContent('An internal error occured. ' . $exception->getMessage());
+//     return $response->setContent('An internal error occurred. ' . $exception->getMessage());
 // });
 
 // Run the server for this request
