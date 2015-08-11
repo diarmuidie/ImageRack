@@ -13,12 +13,12 @@ Features
 --------
 
 - Resizes images on the fly based on predefined user templates.
-- Uses the [Intervention image manipulation library](https://github.com/Intervention/image).
+- Uses the [Intervention image library](https://github.com/Intervention/image) for easy image manipulation using GD or Imagick.
 - Integrates with local or remote (Amazon S3, SFTP, Azure etc.) image stores using the [PHP League Flysystem](http://flysystem.thephpleague.com/) filesystem abstraction library.
 - Ability to cache processed images so that subsequent requests are served quickly.
 - SEO friendly and easy to use URLs i.e. `example.com/<template>/path/to/source/image.png`.
 - Supports PNG/JPEG/GIF images.
-- Adds cache-control, eTag and Last_Modified headers to response for better browser and CDN caching.
+- Adds `Cache-Control`, `ETag` and `Last_Modified` headers to response for better browser and CDN caching.
 
 Usage
 -----
@@ -81,16 +81,16 @@ Configuration
 ImageRack allows you to configure the server in a number of ways:
 
 ### HTTP Cache Max Age
-You can overwrite the default cache max age value (30 days):
+You can overwrite the default http cache max age header value (30 days):
 
 ```php
-$server->setHttpCacheMaxAge(86000);
+$server->setHttpCacheMaxAge(86000); // 86000 seconds = 1 day
 ```
 
-Setting the cache duration to zero days will disable the cache by setting a `Cache-Control:no-cache` header.
+Setting the cache duration to zero will disable the cache by setting a `Cache-Control:no-cache` header.
 
 ### Templates
-Templates are objects that define how an image should be manipulated. You can create as many of your own templates. Tmeplates must implement the [Diarmuidie\ImageRack\Image\TemplateInterface](https://github.com/diarmuidie/ImageRack-Kernel/blob/master/src/Image/TemplateInterface.php) interface. There is a [sample template](https://github.com/diarmuidie/ImageRack/blob/master/templates/Small.php) provided with ImageRack for resizing images to 320×240px.
+Templates are objects that define how an image should be manipulated. You can create multiple tempaltes to manipuate an image in different ways. Templates must implement the [Diarmuidie\ImageRack\Image\TemplateInterface](https://github.com/diarmuidie/ImageRack-Kernel/blob/master/src/Image/TemplateInterface.php) interface. There is a [sample template](https://github.com/diarmuidie/ImageRack/blob/master/templates/Small.php) provided with ImageRack for resizing images to 320×240px.
 
 After you create a new template it must be registered in the server:
 
@@ -103,16 +103,19 @@ $server->setTemplate(
 );
 ```
 
+The template name (`large` in this example) must be URL safe as it is used to access images using this template i.e. `example.com/large/path/to/image.jpg`.
+
 ### Not Found Response
-You can set an optional "not found" response. By default a 404 header will be sent with the body "File not found". However this can be changed using the `setNotFound()` method:
+You can set an optional "not found" response. By default a 404 header will be sent with the body "File not found". However this can be modified using the `setNotFound()` method:
 
 ```php
 $server->setNotFound(function ($response) {
 
-    // Edit the response as required
+    // Edit the response as required.
+    // For example here we cahnge the content
     $response->setContent('Image not found.');
 
-    // Return the new response
+    // Return the modified response
     return $response;
 
 });
@@ -122,15 +125,16 @@ $server->setNotFound(function ($response) {
 
 
 ### Error Response
-You can set an optional "error" response. By default a 500 header will be sent with the body "There has been a problem serving this request". However this can be changed using the `setError()` method:
+You can set an optional "error" response. By default a 500 header will be sent with the body "There has been a problem serving this request". However this can be modified using the `setError()` method:
 
 ```php
-$server->setNotFound(function ($response, $exception) {
+$server->setError(function ($response, $exception) {
 
-    // Edit the response as required
-    $response->setContent('An internal error occured. ' . $exception->getMessage());
+    // Edit the response as required.
+    // For example here we add the exception message to the content
+    $response->setContent('An internal error occurred. ' . $exception->getMessage());
 
-    // Return the new response
+    // Return the modified response
     return $response;
 
 });
@@ -143,10 +147,21 @@ $server->setNotFound(function ($response, $exception) {
 Changelog
 ---------
 
-### Version 0.1 (29 March 2015)
+### Version 0.1.0 (29 March 2015)
 
 - Initial commit.
 
+### Version 0.1.1 (5 August 2015)
+
+- Require 0.2.0 release of ImageRack.
+
+### Version 0.2.0 (9 August 2015)
+
+- Default to GD image library.
+
+### Version 0.2.1 (11 August 2015)
+
+- Doc tidy up an improvements to examples.
 
 Authors
 -------
