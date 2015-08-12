@@ -1,7 +1,7 @@
 ImageRack
 =========
 
-> Project repo for the [ImageRack PHP lib](https://github.com/diarmuidie/ImageRack-Kernel). Simple PHP image processor and server. Work in Progress.
+> Project repo for the [ImageRack PHP lib](https://github.com/diarmuidie/ImageRack-Kernel). Simple PHP image processor and server.
 
 Developed by [Diarmuid](https://diarmuid.ie).
 
