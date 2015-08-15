@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": ">=5.4",
-        "diarmuidie/imagerack-kernel": "^0.2"
+        "diarmuidie/imagerack-kernel": "^0.3"
     },
     "suggest": {
         "league/flysystem-aws-s3-v3": "Allows using S3 as the source and cache locations"

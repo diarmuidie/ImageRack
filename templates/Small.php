@@ -17,8 +17,11 @@ class Small implements TemplateInterface
         // Manipulate the image as required
         $image->fit(320, 240);
 
-        // Encode the manipulated image and return it
-        $image->encode();
+        // Optionally encode the manipulated image or let
+        // imageRack encode it with the default values.
+        // $image->encode();
+        
+        // Return the manipulated image
         return $image;
     }
 }
