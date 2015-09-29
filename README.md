@@ -23,7 +23,7 @@ Features
 Usage
 -----
 
-Sample Heroku Setup guide and code: [diarmuid.ie/blog/setting-up-a-php-image-server-on-heroku](http://diarmuid.ie/blog/setting-up-a-php-image-server-on-heroku/).
+>_Sample Heroku Setup guide and code:_ [diarmuid.ie/blog/setting-up-a-php-image-server-on-heroku](http://diarmuid.ie/blog/setting-up-a-php-image-server-on-heroku/).
 
 To start a new project use the composer `create-project` command to install the ImageRack package in a named folder:
 
