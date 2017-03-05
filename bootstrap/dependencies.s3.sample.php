@@ -10,7 +10,7 @@ $dependencies = [];
 // Create an S3 client
 $s3Client = S3Client::factory([
     'credentials' => [
-        'key'    => '', // Add your S3 Key here
+        'key' => '', // Add your S3 Key here
         'secret' => '', // Add your S3 Secret here
     ],
     'region' => 'eu-west-1',
