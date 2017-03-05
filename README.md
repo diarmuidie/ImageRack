@@ -165,6 +165,10 @@ Changelog
 
 - Doc tidy up an improvements to examples.
 
+### Version 0.3.0 (5 March 2017)
+
+- Require 0.4.0 release of ImageRack (PHP >= 5.6)
+
 Authors
 -------
 
@@ -176,7 +180,7 @@ License
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Diarmuid
+Copyright (c) 2017 Diarmuid
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
